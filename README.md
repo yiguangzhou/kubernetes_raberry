@@ -120,4 +120,24 @@ $ kubectl create -f add-role.yaml
 
 # Verify dashboard
 $ kubectl get svc --namespace kube-system  
+NAME                   TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)         AGE  
+kube-dns               ClusterIP   10.96.0.10      <none>        53/UDP,53/TCP   20h  
+kubernetes-dashboard   ClusterIP   10.108.75.231   <none>        80/TCP          17h  
+    
+$ sudo ssh -L 8080:10.108.75.231:80 pi@192.168.1.101  
+$ kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')  
+Name:         admin-user-token-v454k
+Namespace:    kube-system
+Labels:       <none>
+Annotations:  kubernetes.io/service-account.name=admin-user
+kubernetes.io/service-account.uid=f64be1d8-e807-11e7-aaa1-b827eb632aa7
+Type:  kubernetes.io/service-account-token
+Data
+====
+ca.crt:     1025 bytes
+namespace:  11 bytes
+token:      eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJhZG1pbi11c2VyLXRva2VuLXY0NTRrIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQubmFtZSI6ImFkbWluLXVzZXIiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC51aWQiOiJmNjRiZTFkOC1lODA3LTExZTctYWFhMS1iODI3ZWI2MzJhYTciLCJzdWIiOiJzeXN0ZW06c2VydmljZWFjY291bnQ6a3ViZS1zeXN0ZW06YWRtaW4tdXNlciJ9.n5Jtq0FAy9mi51OGEUIn6WwzyL24Cqy1ewSbeFJU19RG1_bTaKrM9TPEcx6GypANNT2uMPSriIh7rpH-yu0lbjxvTSkEH6RW_Y7jLYbJC5EfI4FgiMteyl_uslnlkS561ZiR8H-xpZybM2CYyuSJYHPFnDmT14lpr_iyGXuDkikfyEtiKbXg9DioVKdZF9xloCRBKDBllPFdtUs4digaMgLMK4ABxEGiSFgBF9mdnsk-qRCla-5ieu2tfU1L4_YDOpLBnSaP0FZcxWuo8hrb3mQ1ukwRRGvxLdXOIXDx2KYQaVDyWGhJJOy48ZCxfkQXbfWMm6WrX-RidDwpolfodg  
+
+# https://medium.com/@mczachurski/kubernetes-on-raspberry-pi-with-net-core-36ea79681fe7  
+
 
