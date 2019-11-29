@@ -4,9 +4,13 @@ $ sudo dpkg-reconfigure keyboard-configuration
 
 #WiFi connection
 /etc/network/interfaces
+
 auto wlan0
+
 iface wlan0 inet manual
+
 wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+
 
 /etc/wpa_supplicant/wpa_supplicant.conf
 country=GB
