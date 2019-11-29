@@ -1,5 +1,7 @@
 # kubernetes_raberry
 树莓派安装kubernetes集群
+
+
 $ sudo dpkg-reconfigure keyboard-configuration
 
 # WiFi connection  
