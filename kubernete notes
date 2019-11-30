@@ -1,0 +1,7 @@
+Node, Master, node processes  
+master 协调集群中的所有活动，例如调度应用程序，维护应用程序的所需状态,扩展应用程序以及推出新的
+更新.  
+Node, 是充当kubernetes集群中的辅助计算机的VM或物理计算机.每个节点都有一个Kubelet. 它是用于  
+管理节点并于kubernetes主节点通信的代理.该节点还应该具有用于处理容器操作的工具,例如docker或  
+rkt.处理生产流量的kubernetes集群至少应具有三个节点.  
+Minikube是一种轻量级的kubernetes实现.
